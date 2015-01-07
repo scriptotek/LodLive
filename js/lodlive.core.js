@@ -3073,7 +3073,7 @@ var debugOn = false;
 				text : ((x1 + 60) > x2 ? " « " : "") + label + ((x1 + 60) > x2 ? "" : " » "),
 				align : "center",
 				strokeWidth : 0.01,
-				fontSize : 11,
+				fontSize : 12,
 				fontFamily : "'Open Sans',Verdana"
 			}).restoreCanvas().restoreCanvas();
 

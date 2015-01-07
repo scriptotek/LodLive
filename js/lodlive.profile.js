@@ -2,6 +2,82 @@ $.jStorage.set('profile', {
 	// parametri di connessione agli endpoint
 	'connection' : {
 		// base degli about dei documenti non dell'ontologia
+		'http://data.ub.uio.no' : {
+			description : {
+				nb : 'Datarom for UB',
+				en : 'Datarom for UB'
+			},
+			useForInverseSameAs : false,
+			endpoint : 'http://data.ub.uio.no/sparql',
+			examples : [{
+				uri : 'http://data.ub.uio.no/realfagstermer/013800',
+				label : 'Akvakultur'
+			}, {
+				uri : 'http://data.ub.uio.no/realfagstermer/009111',
+				label : 'Permafrost'
+			}, {
+				uri : 'http://data.ub.uio.no/realfagstermer/003037',
+				label : 'Moderne fysikk'
+			}]
+		},
+		'http://ntnu.no/ub/data/' : {
+			description : {
+				nb : 'Datarom for UB',
+				en : 'Datarom for UB'
+			},
+			useForInverseSameAs : false,
+			endpoint : 'http://data.ub.uio.no/sparql',
+			examples : [{
+                uri : 'http://ntnu.no/ub/data/tekord%23NTUB00556',
+				label : 'Atmosfæren – Fysikk'
+			}, {
+                uri : 'http://ntnu.no/ub/data/tekord%23NTUB08394',
+				label : 'Permafrost'
+			}]
+		},
+		'http://aims.fao.org/aos/agrovoc' : {
+			description : {
+				nb : 'Agrovoc',
+				en : 'Agrovoc'
+			},
+			useForInverseSameAs : true,
+			endpoint : 'http://biblionaut.net/lodlive/agrovoc-proxy.php',
+			examples : [{
+                uri : 'http://aims.fao.org/aos/agrovoc/c_388',
+				label : 'Anaplasma'
+			}, {
+                uri : 'http://aims.fao.org/aos/agrovoc/c_2393',
+				label : 'Drug plants'
+			}]
+		},
+		'http://aims.fao.org/aos/asfa' : {
+			description : {
+				nb : 'ASFA Thesaurus',
+				en : 'ASFA Thesaurus'
+			},
+			useForInverseSameAs : true,
+			endpoint : 'http://biblionaut.net/lodlive/asfa-proxy.php',
+			examples : [{
+                uri : 'http://aims.fao.org/aos/asfa/c_3755',
+				label : 'Absorption spectroscopy'
+			}, {
+                uri : 'http://aims.fao.org/aos/asfa/c_4123',
+				label : 'Atmospheric chemistry'
+			}]
+		},
+		'http://dewey.info' : {
+			description : {
+				it : 'Dewey.info',
+				en : 'Dewey.info'
+			},
+			endpointType : 'arcSparql',
+			useForInverseSameAs : true,
+			endpoint : 'http://dewey.info/sparql.php',
+			examples : [{
+				label : 'Modern physics',
+				uri : 'http://dewey.info/class/539/e23/'
+			}]
+		},
 		'http://fr.dbpedia.org' : {
 			description : {
 				fr : 'DBpédia en français est le chapitre francophone de DBpedia, il s\'inscrit dans l\'effort d\'internationalisation de DBpedia dont le but est de maintenir des données structurées extraites de différents chapitres de Wikipedia.',
@@ -592,7 +668,9 @@ $.jStorage.set('profile', {
 		endpoint : 'http://labs.regesta.com/resourceProxy/',
 		document : {
 			className : 'standard',
-			titleProperties : ['http://dati.senato.it/osr/titolo', 'http://www.w3.org/2004/02/skos/core#notation', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#value', 'http://www.geonames.org/ontology#name', 'http://purl.org/dc/elements/1.1/title', 'http://purl.org/dc/terms/title', 'http://www.w3.org/2000/01/rdf-schema#label', 'http://www.w3.org/2004/02/skos/core#prefLabel', 'http://logd.tw.rpi.edu/source/visualizing-org/dataset/2010-global-agenda-council-interlinkage-survey/vocab/enhancement/1/how_councils_interlink', 'http://rdf.freebase.com/ns/type.object.name', 'http://spcdata.digitpa.gov.it/nome_cognome', 'http://xmlns.com/foaf/0.1/firstName', 'http://xmlns.com/foaf/0.1/lastName', 'http://xmlns.com/foaf/0.1/surname', 'http://xmlns.com/foaf/0.1/name', 'http://purl.org/dc/terms/description','http://www.geonames.org/ontology/officialName', 'http://d-nb.info/standards/elementset/gnd#preferredName', 'http://d-nb.info/standards/elementset/gnd#preferredNameForTheFamily', 'http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson', 'http://d-nb.info/standards/elementset/gnd#preferredNameForThePlaceOrGeographicName', 'http://d-nb.info/standards/elementset/gnd#preferredNameForTheConferenceOrEvent', 'http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork', 'http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading']
+			titleProperties : ['http://dati.senato.it/osr/titolo', 'http://www.w3.org/2004/02/skos/core#notation', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#value', 'http://www.geonames.org/ontology#name', 'http://purl.org/dc/elements/1.1/title', 'http://purl.org/dc/terms/title', 'http://www.w3.org/2000/01/rdf-schema#label', 'http://www.w3.org/2004/02/skos/core#prefLabel', 'http://logd.tw.rpi.edu/source/visualizing-org/dataset/2010-global-agenda-council-interlinkage-survey/vocab/enhancement/1/how_councils_interlink', 'http://rdf.freebase.com/ns/type.object.name', 'http://spcdata.digitpa.gov.it/nome_cognome', 'http://xmlns.com/foaf/0.1/firstName', 'http://xmlns.com/foaf/0.1/lastName', 'http://xmlns.com/foaf/0.1/surname', 'http://xmlns.com/foaf/0.1/name', 'http://purl.org/dc/terms/description','http://www.geonames.org/ontology/officialName',
+				'http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading'
+			]
 		}, // http://www.w3.org/2000/01/rdf-schema#label
 		images : {
 			properties : ['http://www.w3.org/2006/vcard/ns#photo', 'http://xmlns.com/foaf/0.1/depiction', 'http://dbpedia.org/ontology/thumbnail', 'http://dbpedia.org/property/logo', 'http://linkedgeodata.org/ontology/schemaIcon']

@@ -24,7 +24,6 @@ $(function() {
 	var nextSpeed = 500;
 	var fadeSpeed = 100;
 	var loca = $(location).attr('search');
-    var hash = $(location).attr('hash');
 	if (loca) {
 		$("#startPanel").remove();
 		$(".paginator").remove();
@@ -32,7 +31,6 @@ $(function() {
 		$("#lang").remove();
 		$('body').append('<div id="aSpace"></div>');
 		var res = $.trim(loca.substring(loca.indexOf("?") + 1));
-		if (hash) res += hash;
 		res = res.replace(/%2F/g, '/');
 		res = res.replace(/%3A/g, ':');
 		res = res.replace(/%23/g, '#');
@@ -441,6 +439,8 @@ $(function() {
 				$(this).data('show', true);
 				var ele = $(this);
 				var jEndpoints = $('<div class="selectionList"></div>');
+				jEndpoints.append('<div class="selectEle" rel="realfagstermer"><span>Realfagstermer</span></div>');
+				jEndpoints.append('<div class="selectEle" rel="humord"><span>Humord</span></div>');
 				jEndpoints.append('<div class="selectEle" rel="dbpedia"><span>dbpedia.org</span></div>');
 				jEndpoints.append('<div class="selectEle" rel="freebase"><span>freebase.com</span></div>');
 				jEndpoints.hover(function() {
@@ -589,6 +589,50 @@ $(function() {
 				complete : function(a, b) {
 					if (b == 'error' || b == 'parsererror' || b == 'timeout') {
 						myAlert(lang('enpointNotAvailableOrSLow') + "<br />https://www.googleapis.com/freebase " + "(" + b + ")");
+						onAbort();
+					}
+				}
+			});
+		} else if (type == 'realfagstermer') {
+			connection = $.ajax({
+				url : 'http://data.ub.uio.no/realfagstermer/api/search?query=' + value,
+				async : true,
+				success : function(json) {
+					for (var int = 0; int < json.results.length; int++) {
+						var row = json.results[int];
+						result.push(row);
+                        /*{
+							uri : row.uri.replace('uio.no', 'uio.nu'),
+							label : row.label
+						});*/
+						callback();
+					}
+				},
+				complete : function(a, b) {
+					if (b == 'error' || b == 'parsererror' || b == 'timeout') {
+						myAlert(lang('enpointNotAvailableOrSLow') + "<br />http://data.ub.uio.no/realfagstermer/api/search " + "(" + b + ")");
+						onAbort();
+					}
+				}
+			});
+		} else if (type == 'humord') {
+			connection = $.ajax({
+				url : 'http://data.ub.uio.no/humord/api/search?query=' + value,
+				async : true,
+				success : function(json) {
+					for (var int = 0; int < json.results.length; int++) {
+						var row = json.results[int];
+						result.push(row);
+                        /*{
+							uri : row.uri.replace('uio.no', 'uio.nu'),
+							label : row.label
+						});*/
+						callback();
+					}
+				},
+				complete : function(a, b) {
+					if (b == 'error' || b == 'parsererror' || b == 'timeout') {
+						myAlert(lang('enpointNotAvailableOrSLow') + "<br />http://data.ub.uio.no/humord/api/search " + "(" + b + ")");
 						onAbort();
 					}
 				}
