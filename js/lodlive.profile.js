@@ -10,13 +10,13 @@ $.jStorage.set('profile', {
 			useForInverseSameAs : false,
 			endpoint : 'http://data.ub.uio.no/sparql',
 			examples : [{
-				uri : 'http://data.ub.uio.no/realfagstermer/013800',
+				uri : 'http://data.ub.uio.no/realfagstermer/c013800',
 				label : 'Akvakultur'
 			}, {
-				uri : 'http://data.ub.uio.no/realfagstermer/009111',
+				uri : 'http://data.ub.uio.no/realfagstermer/c009111',
 				label : 'Permafrost'
 			}, {
-				uri : 'http://data.ub.uio.no/realfagstermer/003037',
+				uri : 'http://data.ub.uio.no/realfagstermer/c003037',
 				label : 'Moderne fysikk'
 			}]
 		},
@@ -137,7 +137,7 @@ $.jStorage.set('profile', {
 			}]
 		},
 
-		'http://dati.senato.it' : {			 
+		'http://dati.senato.it' : {
 			description : {
 				it : 'Il punto per l\'accesso diretto ai dati del Senato della Repubblica. I disegni di legge con il loro iter, le votazioni elettroniche d\'Aula, le Commissioni, i Gruppi parlamentari...',
 				en : 'Il punto per l\'accesso diretto ai dati del Senato della Repubblica. I disegni di legge con il loro iter, le votazioni elettroniche d\'Aula, le Commissioni, i Gruppi parlamentari...'
