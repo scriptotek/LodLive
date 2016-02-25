@@ -1553,12 +1553,13 @@ var debugOn = false;
 
 			// recupero il doctype per caricare le configurazioni specifiche
 			var docType = methods.getJsonValue(uris, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'default');
+			var scheme = methods.getJsonValue(uris, 'http://www.w3.org/2004/02/skos/core#inScheme', 'default');
 			// carico le configurazioni relative allo stile
-			destBox.addClass(methods.getProperty("document", "className", docType));
+			destBox.addClass(methods.getProperty("document", "className", scheme));
 			// ed ai path degli oggetti di tipo immagine
-			var images = methods.getProperty("images", "properties", docType);
+			var images = methods.getProperty("images", "properties", scheme);
 			// ed ai path dei link esterni
-			var weblinks = methods.getProperty("weblinks", "properties", docType);
+			var weblinks = methods.getProperty("weblinks", "properties", scheme);
 			// ed eventuali configurazioni delle proprietÃ  da mostrare
 			// TODO: fare in modo che sia sempre possibile mettere il dominio come fallback
 			var propertiesMapper = methods.getProperty("document", "propertiesMapper", URI.replace(/(http:\/\/[^\/]+\/).+/, "$1"));
@@ -1929,6 +1930,8 @@ var debugOn = false;
 
 			// recupero il doctype per caricare le configurazioni specifiche
 			var docType = methods.getJsonValue(uris, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'default');
+			var scheme = methods.getJsonValue(uris, 'http://www.w3.org/2004/02/skos/core#inScheme', 'default');
+
 			if (thisUri.indexOf("~~") != -1) {
 				docType = 'bnode';
 			}
@@ -1939,8 +1942,8 @@ var debugOn = false;
 			}
 			// destBox.addClass(aClass);
 			if (aClass == null || aClass == 'standard' || aClass == '') {
-				if ($.jStorage.get('classMap')[docType]) {
-					aClass = $.jStorage.get('classMap')[docType];
+				if ($.jStorage.get('classMap')[scheme]) {
+					aClass = $.jStorage.get('classMap')[scheme];
 				} else {
 					var classMap = $.jStorage.get('classMap');
 					aClass = "box" + $.jStorage.get('classMap').counter;
@@ -1951,23 +1954,26 @@ var debugOn = false;
 						classMap.counter = classMap.counter + 1;
 						$.jStorage.set('classMap', classMap);
 					}
-					classMap[docType] = aClass;
+					classMap[scheme] = aClass;
 					$.jStorage.set('classMap', classMap);
 				}
 			}
 			containerBox.addClass(aClass);
 			// ed ai path da mostrare nel titolo del box
-			var titles = methods.getProperty("document", "titleProperties", docType);
+			var titles = methods.getProperty("document", "titleProperties", scheme);
+			console.log(titles);
 			// ed ai path degli oggetti di tipo immagine
-			var images = methods.getProperty("images", "properties", docType);
+			var images = methods.getProperty("images", "properties", scheme);
 			// ed ai path dei link esterni
-			var weblinks = methods.getProperty("weblinks", "properties", docType);
+			var weblinks = methods.getProperty("weblinks", "properties", scheme);
+			console.log(weblinks);
+
 			// e le latitudini
-			var lats = methods.getProperty("maps", "lats", docType);
+			var lats = methods.getProperty("maps", "lats", scheme);
 			// e le longitudini
-			var longs = methods.getProperty("maps", "longs", docType);
+			var longs = methods.getProperty("maps", "longs", scheme);
 			// e punti
-			var points = methods.getProperty("maps", "points", docType);
+			var points = methods.getProperty("maps", "points", scheme);
 
 			// se la proprieta' e' stata scritta come stringa la trasformo in un
 			// array
