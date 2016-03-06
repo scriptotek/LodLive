@@ -441,8 +441,9 @@ $(function() {
 				var jEndpoints = $('<div class="selectionList"></div>');
 				jEndpoints.append('<div class="selectEle" rel="realfagstermer"><span>Realfagstermer</span></div>');
 				jEndpoints.append('<div class="selectEle" rel="humord"><span>Humord</span></div>');
-				jEndpoints.append('<div class="selectEle" rel="dbpedia"><span>dbpedia.org</span></div>');
-				jEndpoints.append('<div class="selectEle" rel="freebase"><span>freebase.com</span></div>');
+				jEndpoints.append('<div class="selectEle" rel="mrtermer"><span>Menneskerettighetstermer</span></div>');
+				// jEndpoints.append('<div class="selectEle" rel="dbpedia"><span>dbpedia.org</span></div>');
+				// jEndpoints.append('<div class="selectEle" rel="freebase"><span>freebase.com</span></div>');
 				jEndpoints.hover(function() {
 				}, function() {
 					ele.click();
@@ -609,7 +610,7 @@ $(function() {
 				},
 				complete : function(a, b) {
 					if (b == 'error' || b == 'parsererror' || b == 'timeout') {
-						myAlert(lang('enpointNotAvailableOrSLow') + "<br />http://data.ub.uio.no/realfagstermer/api/search " + "(" + b + ")");
+						myAlert(lang('enpointNotAvailableOrSLow') + "<br />data.ub.uio.no/skosmos/rest/v1/realfagstermer/search " + "(" + b + ")");
 						onAbort();
 					}
 				}
@@ -630,7 +631,28 @@ $(function() {
 				},
 				complete : function(a, b) {
 					if (b == 'error' || b == 'parsererror' || b == 'timeout') {
-						myAlert(lang('enpointNotAvailableOrSLow') + "<br />http://data.ub.uio.no/humord/api/search " + "(" + b + ")");
+						myAlert(lang('enpointNotAvailableOrSLow') + "<br />data.ub.uio.no/skosmos/rest/v1/humord/search " + "(" + b + ")");
+						onAbort();
+					}
+				}
+			});
+		} else if (type == 'mrtermer') {
+			connection = $.ajax({
+				url : '//data.ub.uio.no/skosmos/rest/v1/mrtermer/search?lang=en&query=' + value + '*',
+				async : true,
+				success : function(json) {
+					for (var int = 0; int < json.results.length; int++) {
+						var row = json.results[int];
+						result.push({
+							uri : row.uri,
+							label : row.prefLabel
+						});
+						callback();
+					}
+				},
+				complete : function(a, b) {
+					if (b == 'error' || b == 'parsererror' || b == 'timeout') {
+						myAlert(lang('enpointNotAvailableOrSLow') + "<br />data.ub.uio.no/skosmos/rest/v1/mrtermer/search " + "(" + b + ")");
 						onAbort();
 					}
 				}
