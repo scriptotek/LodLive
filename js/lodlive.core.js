@@ -2688,9 +2688,9 @@ var debugOn = false;
 				});
 			}
 			SPARQLquery = methods.composeQuery(anUri, 'documentUri');
-			if ($.jStorage.get('doStats')) {
-				methods.doStats(anUri);
-			}
+			// if ($.jStorage.get('doStats')) {
+			// 	methods.doStats(anUri);
+			// }
 			if (SPARQLquery.indexOf("endpoint=") != -1) {
 				var endpoint = SPARQLquery.substring(SPARQLquery.indexOf("endpoint=") + 9);
 				endpoint = endpoint.substring(0, endpoint.indexOf("&"));
