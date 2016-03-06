@@ -595,16 +595,15 @@ $(function() {
 			});
 		} else if (type == 'realfagstermer') {
 			connection = $.ajax({
-				url : 'http://data.ub.uio.no/realfagstermer/api/search?query=' + value,
+				url : '//data.ub.uio.no/skosmos/rest/v1/realfagstermer/search?lang=nb&query=' + value + '*',
 				async : true,
 				success : function(json) {
 					for (var int = 0; int < json.results.length; int++) {
 						var row = json.results[int];
-						result.push(row);
-                        /*{
-							uri : row.uri.replace('uio.no', 'uio.nu'),
-							label : row.label
-						});*/
+						result.push({
+							uri : row.uri,
+							label : row.prefLabel
+						});
 						callback();
 					}
 				},
@@ -617,16 +616,15 @@ $(function() {
 			});
 		} else if (type == 'humord') {
 			connection = $.ajax({
-				url : 'http://data.ub.uio.no/humord/api/search?query=' + value,
+				url : '//data.ub.uio.no/skosmos/rest/v1/humord/search?lang=nb&query=' + value + '*',
 				async : true,
 				success : function(json) {
 					for (var int = 0; int < json.results.length; int++) {
 						var row = json.results[int];
-						result.push(row);
-                        /*{
-							uri : row.uri.replace('uio.no', 'uio.nu'),
-							label : row.label
-						});*/
+						result.push({
+							uri : row.uri,
+							label : row.prefLabel
+						});
 						callback();
 					}
 				},
