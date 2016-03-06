@@ -743,7 +743,7 @@ $.jStorage.set('doDrawMap', $.jStorage.get('doDrawMap', true));
 $.jStorage.set('showInfoConsole', $.jStorage.get('showInfoConsole', true));
 
 $.jStorage.set('endpoints', {
-	all : 'output=json&format=application/json&timeout=0',
+	all : 'output=json&format=application/json',
 	arcSparql : 'output=json&jsonp=lodlive',
 	sesame : 'Accept=application/sparql-results%2Bjson'
 });
