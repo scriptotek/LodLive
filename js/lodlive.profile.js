@@ -8,7 +8,7 @@ $.jStorage.set('profile', {
 				en : 'Datarom for UB'
 			},
 			useForInverseSameAs : false,
-			endpoint : 'http://data.ub.uio.no/sparql',
+			endpoint : '//data.ub.uio.no/sparql',
 			examples : [{
 				uri : 'http://data.ub.uio.no/realfagstermer/c013800',
 				label : 'Akvakultur'
@@ -26,7 +26,7 @@ $.jStorage.set('profile', {
 				en : 'Datarom for UB'
 			},
 			useForInverseSameAs : false,
-			endpoint : 'http://data.ub.uio.no/sparql',
+			endpoint : '//data.ub.uio.no/sparql',
 			examples : [{
                 uri : 'http://ntnu.no/ub/data/tekord%23NTUB00556',
 				label : 'Atmosfæren – Fysikk'
@@ -65,6 +65,7 @@ $.jStorage.set('profile', {
 				label : 'Atmospheric chemistry'
 			}]
 		},
+        /*
 		'http://dewey.info' : {
 			description : {
 				it : 'Dewey.info',
@@ -78,6 +79,7 @@ $.jStorage.set('profile', {
 				uri : 'http://dewey.info/class/539/e23/'
 			}]
 		},
+        */
 		'http://fr.dbpedia.org' : {
 			description : {
 				fr : 'DBpédia en français est le chapitre francophone de DBpedia, il s\'inscrit dans l\'effort d\'internationalisation de DBpedia dont le but est de maintenir des données structurées extraites de différents chapitres de Wikipedia.',
