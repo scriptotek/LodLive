@@ -17,8 +17,10 @@ function file_get_contents2($url) {
     return $data;
 }
 
-$url = 'http://202.45.139.84:10035/catalogs/fao/repositories/agrovoc';
-$url .= '?' . $_SERVER['QUERY_STRING'];
+$url = 'https://query.wikidata.org/sparql?'. http_build_query([
+    'query' => $_GET['query'],
+]);
+//$url .= '?query=' . $_SERVER['QUERY_STRING'];
 
 header('Content-type: application/json; charset=utf-8');
 echo file_get_contents2($url);
